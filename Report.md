@@ -131,9 +131,31 @@ Wall time: 7min 54s
 ```
 
 ## Ideas for Future Work
-This section contains ideas for future work to improve the agent's performance.
+Several improvements to the original Deep Q-Learning algorithm have been suggested. This section contains ideas for future work to improve the agent's performance.
 
-Many improvements have been proposed to DQN over the years.
+**Double DQN**
+
+Deep Q-Learning tends to overestimate action values ([Thrun, et al, 1993](#references)).  Double Q-Learning has been shown to work well in practice to help with this. [van Hasselt, et al (2015)](#references) propose a specific adaptation to the DQN algorithm and show that the resulting algorithm not only reduces the observed overestimations, but that this also leads to much better performance on several games.
+
+**Prioritized Experience Replay**
+
+Deep Q-Learning samples experience transitions *uniformly* from a replay memory. Prioritized experienced replay is based on the idea that the agent can learn more effectively from some transitions than from others, and the more important transitions should be sampled with higher probability ([Schaul, et al., 2015](#references)).
+
+**Dueling DQN**
+
+Currently, in order to determine which states are (or are not) valuable, we have to estimate the corresponding action values *for each action*. However, by replacing the traditional Deep Q-Network (DQN) architecture with a  [dueling architecture](https://arxiv.org/abs/1511.06581) , we can assess the value of each state, without having to learn the effect of each action.
+
+**Learning from multi-step bootstrap targets**
+
+[Mnih, et a; (2016)](#references) proposed a framework for deep reinforcement learning that uses asynchronous gradient descent for optimization of deep neural network controllers. They show show that parallel actor-learners have a stabilizing effect on training, and that asynchronous actor-critic succeeds on a wide variety of continuous motor control problems as well as on a new task of navigating random 3D mazes using a visual input.
+
+**Distributional DQN**
+
+[Bellemare, et al (2017)](#references) argue for the fundamental importance of the value distribution: the distribution of the random return received by a reinforcement learning agent. 
+
+**Noisy DQN**
+
+[Fortunato, et al (2017)](#references) introduce NoisyNet, a deep reinforcement learning agent with parametric noise added to its weights, and show that the induced stochasticity of the agent's policy can be used to aid efficient exploration.
 
 ## References
 * Mnih, V., Kavukcuoglu, K., Silver, D., Rusu, A.A., Veness, J., Bellemare, M.G., Graves, A., Riedmiller, M., Fidjeland, A.K., Ostrovski, G. and Petersen, S., 2015. _Human-level control through deep reinforcement learning_. nature, 518(7540), pp.529-533.
@@ -141,3 +163,10 @@ Many improvements have been proposed to DQN over the years.
 * Miguel Morales, 2020. _Grokking Deep Reinforcement Learning_. Manning Publications.
 * Alexander Zai, Brandon Brown, 2020. _Deep Reinforcement Learning in Action_. Manning Publications.
 * Udacity, 2021. [Deep Reinforcement Learning Nanodegree](https://www.udacity.com/course/deep-reinforcement-learning-nanodegree--nd893).
+* Van Hasselt, H., Guez, A. and Silver, D., 2016, March. _Deep reinforcement learning with double q-learning_. In Proceedings of the AAAI conference on artificial intelligence (Vol. 30, No. 1).
+* Thrun, S. and Schwartz, A., 1993, December. _Issues in using function approximation for reinforcement learning_. In Proceedings of the Fourth Connectionist Models Summer School (pp. 255-263).
+* Schaul, T., Quan, J., Antonoglou, I. and Silver, D., 2015. _Prioritized experience replay_. arXiv preprint arXiv:1511.05952.
+Vancouver
+* Mnih, V., Badia, A.P., Mirza, M., Graves, A., Lillicrap, T., Harley, T., Silver, D. and Kavukcuoglu, K., 2016, June. _Asynchronous methods for deep reinforcement learning_. In International conference on machine learning (pp. 1928-1937). PMLR.
+* Bellemare, M.G., Dabney, W. and Munos, R., 2017, July. _A distributional perspective on reinforcement learning_. In International Conference on Machine Learning (pp. 449-458). PMLR.
+* Fortunato, M., Azar, M.G., Piot, B., Menick, J., Osband, I., Graves, A., Mnih, V., Munos, R., Hassabis, D., Pietquin, O. and Blundell, C., 2017. _Noisy networks for exploration_. arXiv preprint arXiv:1706.10295.
