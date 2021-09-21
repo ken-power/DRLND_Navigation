@@ -11,12 +11,10 @@ This section describes the learning algorithm, along with the chosen hyperparame
 
 [Sutton and Barto (2018)](#references) _"To demonstrate this, they let DQN learn to play 49 different Atari 2600 video games by interacting with a game emulator. DQN learned a different policy for each of the 49 games (because the weights of its ANN were reset to random values before learning on each game), but it used the same raw input, network architecture, and parameter values (e.g., step size, discount rate, exploration parameters, and many more specific to the implementation) for all the games. DQN achieved levels of play at or beyond human level on a large fraction of these games."_
 
-The basic architecture of DQN is similar to that of a deep convolutional neural network, and is shown here [(Mnih, et al., 2016)](#references):
-
-![DQN architecture](images/dqn_architecture.png)
-
 Here is the DQN algorithm from the original paper by [Mnih, et al. (2016)](#references):
+
 ![DQN Algorithm](images/dqn_algorithm.png) 
+
 
 The following view of the algorithm clearly highlights the sampling and learning steps [(Udacity)](#references):
 ![](images/dqn_algorithm_udacity.png)
@@ -99,7 +97,14 @@ action_size |4| dimension of each action
 seed |68| random seed
 target_average_score |13.0| the agent must get an average score of +13 over 100 consecutive episodes
 
-#### Training the model
+
+#### Model Architecture
+
+The basic architecture of DQN is similar to that of a deep convolutional neural network, and is shown here [(Mnih, et al., 2016)](#references):
+
+![DQN architecture](images/dqn_architecture.png)
+
+#### Training the Model
 
 Here is a GIF of my model training:
 ![DQN Training](images/training_dqn.gif)
