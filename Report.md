@@ -95,12 +95,15 @@ action_size |4| dimension of each action
 seed |68| random seed
 target_average_score |13.0| the agent must get an average score of +13 over 100 consecutive episodes
 
-
 #### Model Architecture
 
 The basic architecture of DQN is similar to that of a deep convolutional neural network, and is shown here [(Mnih, et al., 2016)](#references):
 
 ![DQN architecture](images/dqn_architecture.png)
+
+The following DQN workflow diagram shows the relationships between the hyperparameters and the various elements of the architecture ([Udacity](#references)):
+
+![DQN Workflow](images/dqn_workflow.png)
 
 #### Training the Model
 

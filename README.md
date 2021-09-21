@@ -78,7 +78,7 @@ Then, tell `ipykernel` about the `DLRND` conda virtual environment:
 
 Go to the root directory of your project, and run the `jupyter notebook` command:
 ```
-(DLRND )$ jupyter notebook
+(DLRND) $ jupyter notebook
 ```
 Once Jupyter starts, select the [Navigation.ipynb](Navigation.ipynb). Go to the Kernel menu, and select the Change kernel option. From there, you should see the `DLRND` environment name listed. After you select the environment name that you want, you will see it displayed in the top right corner of the notebook, as shown here:
 
