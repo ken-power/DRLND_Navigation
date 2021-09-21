@@ -38,3 +38,87 @@ Download the environment that matches your operating system from one of the link
 I store my environment files locally, rather than in GitHub, because they are quite large. This one is 78.1MB on Mac, for example. 
 
 Note, the project environment is similar to, but not identical to the Banana Collector environment on the [Unity ML-Agents GitHub page](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Learning-Environment-Examples.md#banana-collector).
+
+# Create a Virtual Environment and Install Dependencies
+The primary dependencies for this project are:
+
+* [PyTorch](https://pytorch.org)
+* [OpenAI Gym](https://gym.openai.com)
+* [unityagents](https://pypi.org/project/unityagents/)
+* [numpy](https://numpy.org)
+* [matplotlib](https://matplotlib.org)
+
+The [requirements.txt](requirements.txt) file contains all dependencies required to run the project code. You can use the [requirements.txt](requirements.txt) to create a virtual environment to run the project code.
+
+For example, I use [Conda](https://docs.conda.io/) to create a virtual environment called `DLRND`, using the following command:
+
+```shell
+$ conda create --name DRLND --file requirements.txt
+```
+Activate the `DLRND` virtual environment:
+```
+$ conda activate DLRND
+(DLRND) $ 
+```
+
+# Running the Code
+
+The primary project code is run from the [Navigation.ipynb](Navigation.ipynb) Jupyter Notebook.
+
+
+Install `ipykernel` if not already installed:
+```
+(DLRND) $ conda install -c anaconda ipykernel
+```
+
+Then, tell `ipykernel` about the `DLRND` conda virtual environment:
+```
+(DLRND) $ python -m ipykernel install --user --name=DLRND
+```
+
+Go to the root directory of your project, and run the `jupyter notebook` command:
+```
+(DLRND )$ jupyter notebook
+```
+Once Jupyter starts, select the [Navigation.ipynb](Navigation.ipynb). Go to the Kernel menu, and select the Change kernel option. From there, you should see the `DLRND` environment name listed. After you select the environment name that you want, you will see it displayed in the top right corner of the notebook, as shown here:
+
+![Notebook shows selected Kernel](images/notebook_kernel.png)
+
+From there, you can follow the instructions in the notebook, and step through the notebook to see the DQN implementation in action.
+
+
+The file [model.py](model.py) is imported by [dqn_agent.py](dqn_agent.py) and is used in the Agent initialized to create both the local and target networks:
+
+```python
+self.qnetwork_local = QNetwork(state_size, action_size, seed).to(device)
+self.qnetwork_target = QNetwork(state_size, action_size, seed).to(device)
+```
+
+The file [dqn_agent.py](dqn_agent.py) contains the code for the `Agent` class and the `ReplayBuffer` class. This file is imported in the [Navigation.ipynb](Navigation.ipynb) notebook. The code in the notebook then creates an `Agent` object, as shown:
+
+```python
+from dqn_agent import Agent
+
+agent = Agent(state_size=37, action_size=4, seed=68)
+```
+
+The `agent` object is used in the `dqn()` function. Training the agent is done by calling the `dqn()` function, which returns the scores:
+
+```python
+scores = dqn()
+```
+
+This results in the following ouput:
+
+```text
+Episode 100	Average Score: 0.99
+Episode 200	Average Score: 4.47
+Episode 300	Average Score: 7.87
+Episode 400	Average Score: 10.42
+Episode 500	Average Score: 12.64
+Episode 511	Average Score: 13.03
+Environment solved in 411 episodes!	Average Score: 13.03
+```
+
+I then plot the scores using `matplotlib`. The [project report file](Report.md) shows the output in more detail.
+
