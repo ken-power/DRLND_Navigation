@@ -8,6 +8,8 @@ I completed this project as part of [Udacity](https://www.udacity.com)'s [Deep R
 
 The [Project Report](Report.md) describes the learning algorithm and results in more detail.
 
+The file [checkpoint.pth](checkpoint.pth) contains the saved model weights of the successful agent.
+
 The goal of this project is to train an agent to navigate in a large, square world and collect bananas.  
 
 ![Trained Agent][image1]
