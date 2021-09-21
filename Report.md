@@ -5,9 +5,7 @@ This section describes the learning algorithm, along with the chosen hyperparame
 
 #### DQN Algorithm
 
-[Mnih, et al (2016)](#references) introduced a reinforcement learning agent called a deep-Q network (DQN), which combines reinforcement learning with deep neural networks. 
-
-[Mnih, et al (2016)](#references) used DQN to show how a reinforcement learning agent can achieve a high level of performance on any of a collection of different problems without having to use different problem-specific feature sets. 
+[Mnih, et al (2016)](#references) introduced a reinforcement learning agent called a deep-Q network (DQN), which combines reinforcement learning with deep neural networks. The authors used DQN to show how a reinforcement learning agent can achieve a high level of performance on any of a collection of different problems without having to use different problem-specific feature sets. 
 
 [Sutton and Barto (2018)](#references) _"To demonstrate this, they let DQN learn to play 49 different Atari 2600 video games by interacting with a game emulator. DQN learned a different policy for each of the 49 games (because the weights of its ANN were reset to random values before learning on each game), but it used the same raw input, network architecture, and parameter values (e.g., step size, discount rate, exploration parameters, and many more specific to the implementation) for all the games. DQN achieved levels of play at or beyond human level on a large fraction of these games."_
 
