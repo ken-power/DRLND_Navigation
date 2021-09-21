@@ -10,7 +10,7 @@ from model import QNetwork
 
 BUFFER_SIZE = int(1e5)  # replay buffer size
 BATCH_SIZE = 64  # minibatch size
-GAMMA = 0.99  # discount factor
+GAMMA = 0.995  # discount factor
 TAU = 1e-3  # for soft update of target parameters
 LR = 5e-4  # learning rate
 UPDATE_EVERY = 4  # how often to update the network
@@ -88,6 +88,7 @@ class Agent:
 
         # Get max predicted Q values (for next states) from target model
         Q_targets_next = self.qnetwork_target(next_states).detach().max(1)[0].unsqueeze(1)
+
         # Compute Q targets for current states
         Q_targets = rewards + (gamma * Q_targets_next * (1 - dones))
 
@@ -96,6 +97,7 @@ class Agent:
 
         # Compute loss
         loss = F.mse_loss(Q_expected, Q_targets)
+
         # Minimize the loss
         self.optimizer.zero_grad()
         loss.backward()
