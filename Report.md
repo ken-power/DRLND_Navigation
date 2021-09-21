@@ -15,12 +15,13 @@ The basic architecture of DQN is similar to that of a deep convolutional neural 
 
 ![DQN architecture](images/dqn_architecture.png)
 
+Here is the DQN algorithm from the original paper by [Mnih, et al. (2016)](#references):
+![DQN Algorithm](images/dqn_algorithm.png) 
 
-Algorithm | Code
-:--- | :----
-![DQN Algorithm](images/dqn_algorithm.png) | ![DQN Code](images/dqn_code.png)
+The following view of the algorithm clearly highlights the sampling and learning steps [(Udacity)](#references):
+![](images/dqn_algorithm_udacity.png)
 
-Here is the `dqn()` function from the [Navigation](Navigation.ipynb) notebook:
+Here is the `dqn()` function from the [Navigation](Navigation.ipynb) notebook that implements the DQN algorithm for this problem:
 
 ```python
 def dqn(n_episodes=2000, max_t=1000, eps_start=1.0, eps_end=0.01, eps_decay=0.995):
@@ -68,7 +69,8 @@ def dqn(n_episodes=2000, max_t=1000, eps_start=1.0, eps_end=0.01, eps_decay=0.99
             print('\rEpisode {}\tAverage Score: {:.2f}'.format(i_episode, np.mean(scores_window)))
         
         if np.mean(scores_window)>=target_average_score:
-            print('\nEnvironment solved in {:d} episodes!\tAverage Score: {:.2f}'.format(i_episode-100, np.mean(scores_window)))
+            print('\nEnvironment solved in {:d} episodes!\tAverage Score: {:.2f}'.format(i_episode-100, 
+                                                                                         np.mean(scores_window)))
             torch.save(agent.qnetwork_local.state_dict(), 'checkpoint.pth')
             break
             
@@ -81,17 +83,21 @@ Here are the hyperparameters and their values:
 
 Hyperparameter | Value | Description
 :--- | :--- | :---
-BUFFER_SIZE | 1e5 | Replay buffer size
-BATCH_SIZE | 64 | Minibatch size
-GAMMA | 0.995 | Discount factor
-TAU | 1e-3 | For soft update of target parameters
-LR | 5e-4 | Learning rate
-UPDATE_EVERY | 4 | How often to update the network
+BUFFER_SIZE | 1e5 | replay buffer size
+BATCH_SIZE | 64 | minibatch size
+GAMMA | 0.995 | discount factor
+TAU | 1e-3 | for soft update of target parameters
+LR | 5e-4 | learning rate
+UPDATE_EVERY | 4 | how often to update the network
 n_episodes | 2000 | maximum number of training episodes
 max_t |  1000 | maximum number of timesteps per episode
 eps_start | 1.0 | starting value of epsilon, for epsilon-greedy action selection
 eps_end | 0.01 | minimum value of epsilon
 eps_decay | 0.995 | multiplicative factor (per episode) for decreasing epsilon
+state_size |37| dimension of each state
+action_size |4| dimension of each action
+seed |68| random seed
+target_average_score |13.0| the agent must get an average score of +13 over 100 consecutive episodes
 
 #### Training the model
 
@@ -129,4 +135,4 @@ Many improvements have been proposed to DQN over the years.
 * Sutton, R.S. and Barto, A.G., 2018. _Reinforcement learning: An introduction_. MIT press.
 * Miguel Morales, 2020. _Grokking Deep Reinforcement Learning_. Manning Publications.
 * Alexander Zai, Brandon Brown, 2020. _Deep Reinforcement Learning in Action_. Manning Publications.
-* 
+* Udacity, 2021. [Deep Reinforcement Learning Nanodegree](https://www.udacity.com/course/deep-reinforcement-learning-nanodegree--nd893).

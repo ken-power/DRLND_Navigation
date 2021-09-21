@@ -36,6 +36,3 @@ Download the environment that matches your operating system from one of the link
 I store my environment files locally, rather than in GitHub, because they are quite large. This one is 78.1MB on Mac, for example. 
 
 Note, the project environment is similar to, but not identical to the Banana Collector environment on the [Unity ML-Agents GitHub page](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Learning-Environment-Examples.md#banana-collector).
-
-
-# References
